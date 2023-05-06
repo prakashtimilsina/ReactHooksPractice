@@ -1,6 +1,18 @@
-import { useState } from "react"
+import { useState } from "react";
 
+export default function useCounter(initialValue){
+    const [value, setValue] = useState(initialValue);
 
-export default function useCounter(){
+    const increment = ()=> {
+        return setValue(value + 1)
+    };
 
+    const decrement = ()=> {
+        return setValue(value - 1)
+    };
+
+    const reset = () => {
+        return setValue(initialValue);
+    };
+    return [value, increment, decrement, reset]
 } 
